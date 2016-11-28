@@ -38,7 +38,7 @@ public class Main {
                 printOutput( 8, graphTrain.calculateShortestRoute('A', 'C') );
                 printOutput( 9, graphTrain.calculateShortestRoute('B', 'B') );
 
-                printOutput( 10, graphTrain.calculateShortestRoute('B', 'B') );
+                printOutput( 10, graphTrain.countTrips('C', 'C', 30) );
             }
         }
         catch (IOException e)

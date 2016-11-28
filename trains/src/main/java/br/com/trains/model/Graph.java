@@ -16,12 +16,49 @@ public class Graph {
         createGraph(townsStr);
     }
 
+    public String countTrips(char source, char target, int max)
+    {
+        Town sourceTown = findTown(source);
+        Town targetTown = findTown(target);
+
+        int numRoutes = 0;
+        final List<Route> neighbors = sourceTown.getNeighbors();
+        for (Route neighbor: neighbors)
+        {
+            int weightActual = neighbor.getWeight();
+            numRoutes += findNumRoutesWeight(neighbor.getTownTarget(), targetTown, weightActual, max);
+        }
+
+        return String.valueOf(numRoutes);
+    }
+
+    private int findNumRoutesWeight(Town actual, Town target, int weightActual, int max)
+    {
+        int numRoutes = 0;
+        if( weightActual < max )
+        {
+            if (actual.equals(target))
+            {
+                numRoutes++;
+            }
+
+            List<Route> neighbors = actual.getNeighbors();
+            for (Route neighbor : neighbors)
+            {
+                int weightUpdated = weightActual + neighbor.getWeight();
+                numRoutes += findNumRoutesWeight(neighbor.getTownTarget(), target, weightUpdated, max);
+            }
+        }
+
+        return numRoutes;
+    }
+
     public String calculateShortestRoute(char source, char target)
     {
         Town sourceTown = findTown(source);
         Town targetTown = findTown(target);
 
-        int shortestRote = 500;
+        int shortestRote = Integer.MAX_VALUE;
         final List<Route> neighbors = sourceTown.getNeighbors();
         for (Route neighbor: neighbors)
         {
@@ -44,7 +81,7 @@ public class Graph {
             return initShortestRote;
         }
 
-        int shortestRote = 500;
+        int shortestRote = Integer.MAX_VALUE;
         final List<Route> neighbors = actualTarget.getNeighbors();
         for (Route neighbor: neighbors)
         {
