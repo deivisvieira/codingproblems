@@ -1,10 +1,7 @@
 package br.com.trains.model;
 
 import java.util.ArrayList;
-import java.util.InputMismatchException;
 import java.util.List;
-import java.util.StringJoiner;
-import java.util.stream.Stream;
 
 /**
  * Created by manuele on 27/11/16.
@@ -33,6 +30,12 @@ public class Town implements Comparable<Town>
         return -1;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        Town other = (Town)o;
+        return this.getName() == other.getName();
+    }
+
     public void addNeighbor(Route route)
     {
         getNeighbors().add(route);
@@ -43,7 +46,7 @@ public class Town implements Comparable<Town>
         return Integer.compare(minDistance, minDistanceOther);
     }
 
-    private List<Route> getNeighbors() {
+    public List<Route> getNeighbors() {
         return neighbors;
     }
 

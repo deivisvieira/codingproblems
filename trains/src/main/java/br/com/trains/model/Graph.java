@@ -14,8 +14,46 @@ public class Graph {
     public Graph(String[] townsStr)
     {
         towns = new ArrayList<Town>();
-
         createGraph(townsStr);
+    }
+
+    public String calculateNumberTrips(char source, char target, int max, boolean exact)
+    {
+        Town sourceTown = findTown(source);
+        Town targetTown = findTown(target);
+
+        int numRoutes = 0;
+        final List<Route> neighbors = sourceTown.getNeighbors();
+        for (Route neighbor: neighbors)
+        {
+            numRoutes += findNumRoutes(neighbor.getTownTarget(), targetTown, 1, max, exact);
+        }
+
+        return String.valueOf(numRoutes);
+    }
+
+    private int findNumRoutes(Town actual, Town target, int actualDistance, int max, boolean exact)
+    {
+        int numRoutes = 0;
+        if (actual.equals(target) && (!exact || actualDistance == max))
+        {
+            numRoutes++;
+        }
+
+        if ( actualDistance+1 <= max)
+        {
+            List<Route> neighbors = actual.getNeighbors();
+            if(!neighbors.isEmpty())
+            {
+                actualDistance++;
+                for (Route neighbor : neighbors)
+                {
+                    numRoutes += findNumRoutes(neighbor.getTownTarget(), target, actualDistance, max, exact);
+                }
+            }
+        }
+
+        return numRoutes;
     }
 
     public String calculateDistance(String routeToCalculate)

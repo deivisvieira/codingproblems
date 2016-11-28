@@ -1,13 +1,10 @@
 package br.com.trains;
 
 import br.com.trains.model.Graph;
-import br.com.trains.model.Route;
-import br.com.trains.model.Town;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -35,9 +32,8 @@ public class Main {
                 printOutput( 4, graphTrain.calculateDistance("AEBCD") );
                 printOutput( 5, graphTrain.calculateDistance("AED") );
 
-                //output 6
-
-                //output 7
+                printOutput( 6, graphTrain.calculateNumberTrips('C', 'C', 3, false) );
+                printOutput( 7, graphTrain.calculateNumberTrips('A', 'C', 4, true) );
 
                 //output 8
 
