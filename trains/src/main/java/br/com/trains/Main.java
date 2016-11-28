@@ -35,11 +35,10 @@ public class Main {
                 printOutput( 6, graphTrain.calculateNumberTrips('C', 'C', 3, false) );
                 printOutput( 7, graphTrain.calculateNumberTrips('A', 'C', 4, true) );
 
-                //output 8
+                printOutput( 8, graphTrain.calculateShortestRoute('A', 'C') );
+                printOutput( 9, graphTrain.calculateShortestRoute('B', 'B') );
 
-                //output 9
-
-                //output 10
+                printOutput( 10, graphTrain.calculateShortestRoute('B', 'B') );
             }
         }
         catch (IOException e)

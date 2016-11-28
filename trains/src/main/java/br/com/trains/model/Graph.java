@@ -2,7 +2,6 @@ package br.com.trains.model;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.StringJoiner;
 
 /**
  * Created by manuele on 27/11/16.
@@ -15,6 +14,50 @@ public class Graph {
     {
         towns = new ArrayList<Town>();
         createGraph(townsStr);
+    }
+
+    public String calculateShortestRoute(char source, char target)
+    {
+        Town sourceTown = findTown(source);
+        Town targetTown = findTown(target);
+
+        int shortestRote = 500;
+        final List<Route> neighbors = sourceTown.getNeighbors();
+        for (Route neighbor: neighbors)
+        {
+            int actualShortestRote = findShortest(neighbor, targetTown);
+            if(shortestRote> actualShortestRote)
+                shortestRote = actualShortestRote;
+        }
+
+        return String.valueOf(shortestRote);
+    }
+
+    public int findShortest(Route actual, Town targetTown)
+    {
+        int initShortestRote = actual.getWeight();
+        Town actualTarget = actual.getTownTarget();
+        actualTarget.setVisited(true);
+        if(actualTarget.equals(targetTown))
+        {
+            actualTarget.setVisited(false);
+            return initShortestRote;
+        }
+
+        int shortestRote = 500;
+        final List<Route> neighbors = actualTarget.getNeighbors();
+        for (Route neighbor: neighbors)
+        {
+            if(!neighbor.getTownTarget().isVisited())
+            {
+                int actualShortestRote = initShortestRote+findShortest(neighbor, targetTown);
+                if(shortestRote > actualShortestRote)
+                    shortestRote = actualShortestRote;
+            }
+        }
+
+        actualTarget.setVisited(false);
+        return shortestRote;
     }
 
     public String calculateNumberTrips(char source, char target, int max, boolean exact)

@@ -6,14 +6,15 @@ import java.util.List;
 /**
  * Created by manuele on 27/11/16.
  */
-public class Town implements Comparable<Town>
+public class Town
 {
     private char name;
     private List<Route> neighbors;
-    private int minDistance = Integer.MAX_VALUE;
+    private boolean visited;
 
     public Town(char name)
     {
+        this.visited = false;
         this.name = name;
         this.neighbors = new ArrayList<Route>();
     }
@@ -41,11 +42,6 @@ public class Town implements Comparable<Town>
         getNeighbors().add(route);
     }
 
-    public int compareTo(Town town) {
-        int minDistanceOther = town.getMinDistance();
-        return Integer.compare(minDistance, minDistanceOther);
-    }
-
     public List<Route> getNeighbors() {
         return neighbors;
     }
@@ -54,7 +50,11 @@ public class Town implements Comparable<Town>
         return name;
     }
 
-    public int getMinDistance() {
-        return minDistance;
+    public void setVisited(boolean visited) {
+        this.visited = visited;
+    }
+
+    public boolean isVisited() {
+        return visited;
     }
 }
