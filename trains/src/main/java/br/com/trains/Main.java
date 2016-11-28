@@ -1,5 +1,6 @@
 package br.com.trains;
 
+import br.com.trains.business.FindRoute;
 import br.com.trains.model.Graph;
 
 import java.io.IOException;
@@ -25,20 +26,21 @@ public class Main {
             {
                 final String[] graph = (String[]) graphObj;
                 Graph graphTrain = new Graph(graph);
+                FindRoute findRoute = graphTrain.getFindRoute();
 
-                printOutput( 1, graphTrain.calculateDistance("ABC") );
-                printOutput( 2, graphTrain.calculateDistance("AD") );
-                printOutput( 3, graphTrain.calculateDistance("ADC") );
-                printOutput( 4, graphTrain.calculateDistance("AEBCD") );
-                printOutput( 5, graphTrain.calculateDistance("AED") );
+                printOutput( 1, findRoute.calculateDistance("ABC") );
+                printOutput( 2, findRoute.calculateDistance("AD") );
+                printOutput( 3, findRoute.calculateDistance("ADC") );
+                printOutput( 4, findRoute.calculateDistance("AEBCD") );
+                printOutput( 5, findRoute.calculateDistance("AED") );
 
-                printOutput( 6, graphTrain.calculateNumberTrips('C', 'C', 3, false) );
-                printOutput( 7, graphTrain.calculateNumberTrips('A', 'C', 4, true) );
+                printOutput( 6, findRoute.calculateNumberTrips('C', 'C', 3, false) );
+                printOutput( 7, findRoute.calculateNumberTrips('A', 'C', 4, true) );
 
-                printOutput( 8, graphTrain.calculateShortestRoute('A', 'C') );
-                printOutput( 9, graphTrain.calculateShortestRoute('B', 'B') );
+                printOutput( 8, findRoute.calculateShortestRoute('A', 'C') );
+                printOutput( 9, findRoute.calculateShortestRoute('B', 'B') );
 
-                printOutput( 10, graphTrain.countTrips('C', 'C', 30) );
+                printOutput( 10, findRoute.countTrips('C', 'C', 30) );
             }
         }
         catch (IOException e)
