@@ -17,7 +17,7 @@ public class Main {
 
     public static void main(String[] args)
     {
-        final String fileName = "/home/manuele/workspace/codingproblems/trains/src/main/resources/input.txt";
+        final String fileName = args[0];
 
         try (Stream<String> stream = Files.lines(Paths.get(fileName)))
         {
