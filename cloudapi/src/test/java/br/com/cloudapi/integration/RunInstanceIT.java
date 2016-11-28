@@ -39,7 +39,7 @@ public class RunInstanceIT {
     @Test
     public void getRunInstance() throws Exception {
         ResponseEntity<String> response = template.getForEntity(base.toString(), String.class);
-        assertThat(response.getBody(), equalTo("{\"id\":1,\"content\":\"World\"}"));
+        assertThat(response.getBody(), equalTo("{\"name\":\"exo\"}"));
     }
 
 }

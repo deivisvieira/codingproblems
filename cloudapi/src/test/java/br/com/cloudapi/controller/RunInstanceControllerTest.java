@@ -30,6 +30,6 @@ public class RunInstanceControllerTest {
         mvc.perform(MockMvcRequestBuilders.get("/runinstance")
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(content().string(equalTo("{\"id\":1,\"content\":\"World\"}")));
+                .andExpect(content().string(equalTo("{\"name\":\"exo\"}")));
     }
 }
