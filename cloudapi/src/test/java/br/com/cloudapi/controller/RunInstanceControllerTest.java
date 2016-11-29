@@ -42,7 +42,7 @@ public class RunInstanceControllerTest {
     @Test
     public void getRunInstanceByName() throws Exception
     {
-        mvc.perform(MockMvcRequestBuilders.get("/api/runinstance")
+        mvc.perform(MockMvcRequestBuilders.get("/api/runinstancebyname")
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(content().string(equalTo("{\"name\":\"exo\"}")));
