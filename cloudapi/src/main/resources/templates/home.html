@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+    <head>
+        <title>CloudAPI</title>
+    </head>
+    <body>
+        <form th:action="@{/logout}" method="post">
+            <input type="submit" value="Sign Out"/>
+        </form>
+        <h3 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h3>
+
+        <div class="container">
+            <div th:if="${param.error}">
+                Invalid username and password.
+            </div>
+            <div th:if="${param.logout}">
+                You have been logged out.
+            </div>
+            <form th:action="@{/api/createruninstance}" method="post" class="form-create">
+                <label for="inputName" class="sr-only"></label>
+                <input type="text" id="inputName" class="form-control" placeholder="name" name="name" required="" autofocus="" />
+
+                <button class="btn btn-lg btn-primary btn-block" type="submit">create</button>
+            </form>
+        </div>
+    </body>
+</html>

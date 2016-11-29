@@ -1,10 +1,10 @@
 package br.com.cloudapi.service;
 
 import br.com.cloudapi.model.RunInstance;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 /**
  * Created by manuele on 28/11/16.
@@ -23,5 +23,17 @@ public class RunInstanceServiceImpl implements RunInstanceService {
     public RunInstance getRunInstanceByName(String name)
     {
         return this.runInstanceRepository.findByName(name);
+    }
+
+    @Override
+    public void addRunInstance(RunInstance runInstance)
+    {
+        this.runInstanceRepository.save(runInstance);
+    }
+
+    @Transactional(readOnly = true)
+    public List<RunInstance> getAllRunInstance()
+    {
+        return this.runInstanceRepository.findAll();
     }
 }

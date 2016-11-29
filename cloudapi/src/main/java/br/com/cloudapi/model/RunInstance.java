@@ -30,4 +30,8 @@ public class RunInstance implements Serializable {
         return getName();
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
 }
