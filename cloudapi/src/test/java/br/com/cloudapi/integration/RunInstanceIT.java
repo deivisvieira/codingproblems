@@ -32,7 +32,7 @@ public class RunInstanceIT {
 
     @Before
     public void setUp() throws Exception {
-        String infoBase = String.format("http://localhost:%s/runinstance", port);
+        String infoBase = String.format("http://localhost:%s/api/runinstance", port);
         this.base = new URL(infoBase);
     }
 

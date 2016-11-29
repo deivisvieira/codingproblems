@@ -13,6 +13,8 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
+
 /**
  * Created by manuele on 28/11/16.
  */
@@ -25,9 +27,22 @@ public class RunInstanceControllerTest {
     private MockMvc mvc;
 
     @Test
-    public void getRunInstance() throws Exception
+    public void defaultRequest() throws Exception
     {
-        mvc.perform(MockMvcRequestBuilders.get("/runinstance")
+        mvc.perform(MockMvcRequestBuilders.get("/"))
+                .andExpect(MockMvcResultMatchers.status().is(200));
+
+        mvc.perform(MockMvcRequestBuilders.get("/login"))
+                .andExpect(MockMvcResultMatchers.status().is(200));
+
+        mvc.perform(MockMvcRequestBuilders.get("/home"))
+                .andExpect(MockMvcResultMatchers.status().is(302));
+    }
+
+    @Test
+    public void getRunInstanceByName() throws Exception
+    {
+        mvc.perform(MockMvcRequestBuilders.get("/api/runinstance")
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(content().string(equalTo("{\"name\":\"exo\"}")));

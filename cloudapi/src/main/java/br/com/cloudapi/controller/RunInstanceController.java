@@ -17,7 +17,7 @@ public class RunInstanceController {
     @Autowired
     private RunInstanceService runInstanceService;
 
-    @RequestMapping(method = RequestMethod.GET, value = "/runinstance")
+    @RequestMapping(method = RequestMethod.GET, value = "/api/runinstance")
     public RunInstance runInstance(@RequestParam(value = "name", defaultValue = "exo") String name)
     {
         return runInstanceService.getRunInstanceByName(name);
