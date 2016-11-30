@@ -30,8 +30,6 @@ Tecnologias:
 * Configurar projeto
  * [Instalar Maven](http://maven.apache.org/install.html)
  * Acessar raiz do diretório do projeto
- * Executar mvn install
- 
-* Executar testes unitários
- * mvn test 
+ * Executar aplicação + testes: mvn install
+ * Rodar instância local: mvn spring-boot:run
 
