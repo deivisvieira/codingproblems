@@ -25,19 +25,21 @@ public class RunInstanceController {
         return runInstanceService.getRunInstanceByName(name);
     }
 
-    @RequestMapping(method = RequestMethod.POST, value = "/api/runinstance")
-    public void createRunInstance(@RequestParam(value = "name") String name)
+    @RequestMapping(method = RequestMethod.GET, value = "/api/createruninstance")
+    public List<RunInstance> createRunInstance(@RequestParam(value = "name") String name)
     {
         try
         {
             RunInstance runInstance = new RunInstance();
             runInstance.setName(name);
             runInstanceService.addRunInstance(runInstance);
+            return runInstanceService.getAllRunInstance();
         }
         catch (Exception ex)
         {
             ex.printStackTrace();
         }
+        return null;
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/api/runinstance")

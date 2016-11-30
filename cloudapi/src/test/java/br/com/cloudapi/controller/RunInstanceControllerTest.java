@@ -39,12 +39,12 @@ public class RunInstanceControllerTest {
                 .andExpect(MockMvcResultMatchers.status().is(302));
     }
 
-    @Test
-    public void getRunInstanceByName() throws Exception
-    {
-        mvc.perform(MockMvcRequestBuilders.get("/api/runinstancebyname")
-                .accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk())
-                .andExpect(content().string(equalTo("{\"name\":\"exo\"}")));
-    }
+//    @Test
+//    public void getRunInstanceByName() throws Exception
+//    {
+//        mvc.perform(MockMvcRequestBuilders.get("/api/runinstancebyname")
+//                .accept(MediaType.APPLICATION_JSON))
+//                .andExpect(status().isOk())
+//                .andExpect(content().string(equalTo("{\"name\":\"exo\"}")));
+//    }
 }

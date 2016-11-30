@@ -16,11 +16,10 @@
             });
         };
 
-        self.create = function (data) {
+        self.create = function (param) {
             return $http({
-                method: 'POST',
-                url: baseUrl + objectName,
-                data: data
+                method: 'GET',
+                url: baseUrl + 'createruninstance' + '?name=' + param
             }).then(function (response) {
                 return response;
             });

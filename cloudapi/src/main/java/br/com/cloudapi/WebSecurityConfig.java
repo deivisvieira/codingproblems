@@ -18,9 +18,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(WebSecurity web) throws Exception {
         web.ignoring()
-                .antMatchers(HttpMethod.GET, "/api/runinstance");
-        web.ignoring()
-                .antMatchers(HttpMethod.POST, "/api/runinstance");
+                .antMatchers(HttpMethod.GET, "/api/runinstance")
+                .antMatchers(HttpMethod.GET, "/api/createruninstance")
+                .antMatchers(HttpMethod.POST, "/api/runinstance")
+                .antMatchers(HttpMethod.POST, "logout");
     }
 
     @Override
