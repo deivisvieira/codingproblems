@@ -40,7 +40,7 @@ public class RunInstanceController {
         }
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/api/listallruninstance")
+    @RequestMapping(method = RequestMethod.GET, value = "/api/runinstance")
     public List<RunInstance> listAllRunInstance()
     {
         return runInstanceService.getAllRunInstance();
