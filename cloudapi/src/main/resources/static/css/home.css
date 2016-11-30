@@ -4,8 +4,8 @@ body {
   background-color: #eee;
 }
 .grid {
-  width: 500px;
-  height: 250px;
+  width: 200px;
+  height: 200px;
 }
 .form-create {
   max-width: 330px;
