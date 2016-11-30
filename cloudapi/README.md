@@ -2,12 +2,14 @@
 Java library modelada para gerenciar um sistema de cloud computing.
 
 Funcionalidades:
+* Página inicial da aplicação
+ * *URL* http://localhost:8080/home
 * Adição de novas instancias 
- * *URL* http://localhost:8080/runinstance/x , x é o nome
+ * *URL* http://localhost:8080/api/runinstance/x , x é o nome
 * Listagem de instancias
- * *URL* http://localhost:8080/runinstance
+ * *URL* http://localhost:8080/api/runinstance
 * Autenticação e Autorização básica:
- * usuário: user - senha: gerada automaticamente na inicialização da aplicação
+ * usuário: user - senha: password
 
 ## Arquitetura
 Arquitetura baseada na linguagem Java
@@ -21,6 +23,8 @@ Tecnologias:
  * H2: Database Embedded
  * JUnit: Testes unitários
  * MockMvc: Teste integração
+ * AngularJs: Framework Javascript
+ * Bootstrap: Framework front-end
 
 ## Usage
 * Configurar projeto
