@@ -10,5 +10,11 @@ app.controller('RunController', ['ProductsService', '$scope', function (Products
         });
     }
 
+    $scope.addData = function() {
+          ProductsService.create($scope.name).then(function (response) {
+              $scope.gridOptions.data = response.data;
+          });
+    };
+
     $scope.load();
 }]);

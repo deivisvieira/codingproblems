@@ -25,7 +25,7 @@ public class RunInstanceController {
         return runInstanceService.getRunInstanceByName(name);
     }
 
-    @RequestMapping(method = RequestMethod.POST, value = "/api/createruninstance")
+    @RequestMapping(method = RequestMethod.POST, value = "/api/runinstance")
     public void createRunInstance(@RequestParam(value = "name") String name)
     {
         try

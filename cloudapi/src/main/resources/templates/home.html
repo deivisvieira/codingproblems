@@ -26,19 +26,19 @@
     </head>
 
     <body ng-app="uigrid" ng-controller="RunController">
-        <form th:action="@{/logout}" method="post">
-            <input type="submit" value="Sign Out"/>
-        </form>
-
-        <h4>Suas instâncias:</h4>
-        <div ui-grid="gridOptions" class="grid"></div>
-
         <div class="container">
-            <form method="post" class="form-create">
-                <label for="inputName" class="sr-only"></label>
-                <input type="text" ng-model="run.name" id="inputName" class="form-control" placeholder="name" name="name" required="" autofocus="" />
+            <form th:action="@{/logout}" method="post">
+                <input type="submit" value="Sign Out"/>
+            </form>
+            <h4>Suas instâncias:</h4>
+            <div ui-grid="gridOptions" class="grid"></div>
 
-                <button class="btn btn-lg btn-primary btn-block" ng-click="run.create()">create</button>
+            <h4>Quer criar uma nova? Coloca o nome aqui:</h4>
+            <form method="post" class="form-create" ng-submit="addData()">
+                <input type="text" ng-model="name" id="inputName" class="form-control" placeholder="name" name="name" required="" autofocus="" />
+                <span class="input-group-btn">
+                    <input type="submit" class="btn btn-primary" value="create"/>
+                </span>
             </form>
         </div>
     </body>

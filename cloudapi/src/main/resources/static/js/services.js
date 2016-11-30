@@ -3,7 +3,6 @@
         .service('ProductsService', ['$http', ProductsService]);
 
     function ProductsService($http) {
-
         var self = this;
         var baseUrl = 'http://localhost:8080/api/';
         var objectName = 'runinstance';
@@ -17,23 +16,20 @@
             });
         };
 
-        self.readOne = function (id) {
+        self.create = function (data) {
             return $http({
-                method: 'GET',
-                url: baseUrl + objectName + '/' + id
+                method: 'POST',
+                url: baseUrl + objectName,
+                data: data
             }).then(function (response) {
                 return response;
             });
         };
 
-        self.create = function (data) {
+        self.readOne = function (id) {
             return $http({
-                method: 'POST',
-                url: baseUrl + objectName,
-                data: data,
-                params: {
-                    returnObject: true
-                }
+                method: 'GET',
+                url: baseUrl + objectName + '/' + id
             }).then(function (response) {
                 return response;
             });
