@@ -1,23 +1,20 @@
 (function(angular) {
   'use strict';
 angular.module('services', [])
-    .factory('loadInstances', ['$q', '$http', function($http) {
-        var _deferred = $q.defer();
+  .factory('loadInstances', ['$http', function($http) {
+    var URL_PATTERN = 'http://localhost:8080/api/listallruninstance';
+    var instances = {};
 
-        var URL_PATTERN = 'http://localhost:8080/api/listallruninstance';
-        var instances = {};
+    var refresh = function() {
+      return $http.get(URL_PATTERN).then(function(response) {
+        instances = response.data;
+      });
+    };
 
-        $http.get(URL_PATTERN).success(function(data, status, headers, config) {
-            _deferred.resolve(data);
-        })
-        .error(function(data, status, headers, config) {
-            _deferred.reject("Error");
-        });
+    refresh();
 
-        return {
-            instances: function(){
-                return _deferred.promise;
-            }
-        };
+    return {
+      instances: instances
+    };
   }]);
 })(window.angular);
