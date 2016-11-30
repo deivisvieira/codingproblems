@@ -39,12 +39,32 @@ public class RunInstanceControllerTest {
                 .andExpect(MockMvcResultMatchers.status().is(302));
     }
 
-//    @Test
-//    public void getRunInstanceByName() throws Exception
-//    {
-//        mvc.perform(MockMvcRequestBuilders.get("/api/runinstancebyname")
-//                .accept(MediaType.APPLICATION_JSON))
-//                .andExpect(status().isOk())
-//                .andExpect(content().string(equalTo("{\"name\":\"exo\"}")));
-//    }
+    @Test
+    public void getAllRunInstance() throws Exception
+    {
+        mvc.perform(MockMvcRequestBuilders.get("/api/runinstance")
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(content().string(
+                        equalTo("[{\"name\":\"exo\"},{\"name\":\"exo2\"}]")));
+    }
+
+    @Test
+    public void getRunInstanceByName() throws Exception
+    {
+        mvc.perform(MockMvcRequestBuilders.get("/api/runinstancebyname")
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(content().string(equalTo("{\"name\":\"exo\"}")));
+    }
+
+    @Test
+    public void createRunInstanceByName() throws Exception
+    {
+        mvc.perform(MockMvcRequestBuilders.get("/api/createruninstance?name=222")
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(content().string(
+                        equalTo("[{\"name\":\"exo\"},{\"name\":\"exo2\"},{\"name\":\"222\"}]")));
+    }
 }

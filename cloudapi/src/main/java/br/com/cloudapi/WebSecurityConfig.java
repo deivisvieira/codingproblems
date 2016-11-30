@@ -21,6 +21,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.GET, "/api/runinstance")
                 .antMatchers(HttpMethod.GET, "/api/createruninstance")
                 .antMatchers(HttpMethod.POST, "/api/runinstance")
+                .antMatchers(HttpMethod.GET, "/api/runinstancebyname")
                 .antMatchers(HttpMethod.POST, "logout");
     }
 
