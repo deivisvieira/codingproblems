@@ -27,13 +27,15 @@
         </form>
 
         <h4>Suas instâncias:</h4>
-        <div class="container">
-            <ul>
-                <li ng-repeat="c in run.instances">
-                    {{c}}
-                </li>
-            </ul>
-        </div>
+        <!--<div class="container">-->
+            <!--<ul>-->
+                <!--<li ng-repeat="c in run.instances">-->
+                    <!--{{c.name}}-->
+                <!--</li>-->
+            <!--</ul>-->
+        <!--</div>-->
+
+        <div ag-grid="gridOptions" class="ag-fresh" style="height: 100%;"></div>
 
         <div class="container">
             <form method="post" class="form-create">

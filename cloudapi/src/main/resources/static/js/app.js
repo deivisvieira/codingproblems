@@ -1,12 +1,23 @@
 (function(angular) {
   'use strict';
-angular.module('app', ['services'])
+agGrid.initialiseAgGridWithAngular1(angular);
+
+angular.module('app', ['services', 'agGrid'])
   .controller('RunController', ['loadInstances', function RunController(loadInstances) {
-    this.instances = loadInstances.instances;
+        var columnDefs = [
+            {headerName: "Name", field: "name"}
+        ];
 
-    this.create = function create() {
-        window.alert('Thanks!');
-    };
+        var instances = loadInstances.instances;
 
+        this.gridOptions = {
+                                columnDefs: columnDefs,
+                                rowData: instances
+                            };
+
+
+        this.create = function create() {
+            window.alert('Thanks!');
+        };
   }]);
 })(window.angular);
